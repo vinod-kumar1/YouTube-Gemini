@@ -700,7 +700,12 @@ let router = (0, _reactRouter.createBrowserRouter)([
             },
             {
                 path: "watch/:yt_key",
-                Component: (0, _videoPlayerDefault.default)
+                Component: (0, _videoPlayerDefault.default),
+                children: [
+                    {
+                        path: ":yt_key"
+                    }
+                ]
             }
         ]
     }
@@ -711,12 +716,12 @@ let router = (0, _reactRouter.createBrowserRouter)([
         router: router
     }, void 0, false, {
         fileName: "src/index.js",
-        lineNumber: 29,
+        lineNumber: 30,
         columnNumber: 5
     }, undefined)
 }, void 0, false, {
     fileName: "src/index.js",
-    lineNumber: 28,
+    lineNumber: 29,
     columnNumber: 3
 }, undefined));
 
@@ -33738,6 +33743,7 @@ const VideoPlayer = ()=>{
                 className: "right-0 top-0",
                 children: movies.length && movies.map((movie, i)=>{
                     return /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
+                        onClick: ()=>{},
                         className: "ml-1 rounded-md flex",
                         children: [
                             /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("img", {
@@ -33746,7 +33752,7 @@ const VideoPlayer = ()=>{
                                 alt: ""
                             }, void 0, false, {
                                 fileName: "src/Components/VideoPlayer.js",
-                                lineNumber: 27,
+                                lineNumber: 31,
                                 columnNumber: 17
                             }, undefined),
                             /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("p", {
@@ -33760,7 +33766,7 @@ const VideoPlayer = ()=>{
                                 ]
                             }, void 0, true, {
                                 fileName: "src/Components/VideoPlayer.js",
-                                lineNumber: 32,
+                                lineNumber: 36,
                                 columnNumber: 17
                             }, undefined)
                         ]
