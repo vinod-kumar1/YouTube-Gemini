@@ -19,7 +19,6 @@ let router = createBrowserRouter([
       {
         path: "watch/:yt_key",
         Component: VideoPlayer,
-        children: [{ path: ":yt_key" }],
       },
     ],
   },

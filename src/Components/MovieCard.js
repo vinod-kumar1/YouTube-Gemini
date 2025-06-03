@@ -1,7 +1,7 @@
 import React from "react";
 import { useDispatch } from "react-redux";
 import { useNavigate } from "react-router";
-import { setWatvhing } from "../utils/videoStore";
+import { setWatching } from "../utils/videoStore";
 
 const MovieCard = ({ movie, w }) => {
   let navigate = useNavigate();
@@ -12,8 +12,8 @@ const MovieCard = ({ movie, w }) => {
     <div className={`rounded-md bg-gray-700 py-4 w-${w ? w : 60}`}>
       <img
         onClick={() => {
-          navigate(`watch/${key}`);
-          dispatch(setWatvhing(movie));
+          navigate(`/watch/${key}?id=${id}`);
+          dispatch(setWatching(movie));
         }}
         className={`w-[100%] h-40 bg-cover cursor-pointer bg-center`}
         style={{

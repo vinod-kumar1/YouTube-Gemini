@@ -700,12 +700,7 @@ let router = (0, _reactRouter.createBrowserRouter)([
             },
             {
                 path: "watch/:yt_key",
-                Component: (0, _videoPlayerDefault.default),
-                children: [
-                    {
-                        path: ":yt_key"
-                    }
-                ]
+                Component: (0, _videoPlayerDefault.default)
             }
         ]
     }
@@ -716,12 +711,12 @@ let router = (0, _reactRouter.createBrowserRouter)([
         router: router
     }, void 0, false, {
         fileName: "src/index.js",
-        lineNumber: 30,
+        lineNumber: 29,
         columnNumber: 5
     }, undefined)
 }, void 0, false, {
     fileName: "src/index.js",
-    lineNumber: 29,
+    lineNumber: 28,
     columnNumber: 3
 }, undefined));
 
@@ -29600,7 +29595,7 @@ module.exports = require("374a059340689e89");
 var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
 parcelHelpers.defineInteropFlag(exports);
 parcelHelpers.export(exports, "setStore", ()=>setStore);
-parcelHelpers.export(exports, "setWatvhing", ()=>setWatvhing);
+parcelHelpers.export(exports, "setWatching", ()=>setWatching);
 var _toolkit = require("@reduxjs/toolkit");
 let videoStore = (0, _toolkit.createSlice)({
     name: "yt_video",
@@ -29616,14 +29611,14 @@ let videoStore = (0, _toolkit.createSlice)({
                 action.payload
             ];
         },
-        setWatvhing: (state, action)=>{
+        setWatching: (state, action)=>{
             state.watchingVideo = action.payload;
         },
         setPage: (state)=>state.page += 1
     }
 });
 exports.default = videoStore.reducer;
-let { setStore, setWatvhing } = videoStore.actions;
+let { setStore, setWatching } = videoStore.actions;
 
 },{"@reduxjs/toolkit":"fKS5f","@parcel/transformer-js/src/esmodule-helpers.js":"jnFvT"}],"fKS5f":[function(require,module,exports,__globalThis) {
 var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
@@ -33628,8 +33623,8 @@ const MovieCard = ({ movie, w })=>{
         children: [
             /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("img", {
                 onClick: ()=>{
-                    navigate(`watch/${key}`);
-                    dispatch((0, _videoStore.setWatvhing)(movie));
+                    navigate(`/watch/${key}?id=${id}`);
+                    dispatch((0, _videoStore.setWatching)(movie));
                 },
                 className: `w-[100%] h-40 bg-cover cursor-pointer bg-center`,
                 style: {
@@ -33702,17 +33697,29 @@ var _jsxDevRuntime = require("react/jsx-dev-runtime");
 var _react = require("react");
 var _reactDefault = parcelHelpers.interopDefault(_react);
 var _reactRouter = require("react-router");
-var _movieCard = require("./MovieCard");
-var _movieCardDefault = parcelHelpers.interopDefault(_movieCard);
+var _privateKeys = require("../../privateKeys");
 var _reactRedux = require("react-redux");
+var _videoStore = require("../utils/videoStore");
 var _s = $RefreshSig$();
 const VideoPlayer = ()=>{
     _s();
     let { yt_key } = (0, _reactRouter.useParams)();
     let movies = (0, _reactRedux.useSelector)((state)=>state.videos.storedVideos);
-    console.log("kl", yt_key);
+    let navigate = (0, _reactRouter.useNavigate)();
+    let dispatch = (0, _reactRedux.useDispatch)();
+    let watching = (0, _reactRedux.useSelector)((state)=>state.videos.watchingVideo);
+    let [searchParams] = (0, _reactRouter.useSearchParams)();
+    (0, _react.useEffect)(()=>{
+        if (!watching.title) {
+            let id = searchParams.get("id");
+            fetch(`https://api.themoviedb.org/3/movie/${id}?language=en-US`, (0, _privateKeys.privateKey).options).then((res)=>res.json()).then((json)=>{
+                console.log("wat", json.results[0]);
+                dispatch((0, _videoStore.setWatching)(json.results[0]));
+            }).catch(console.log);
+        }
+    }, []);
     return /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
-        className: "z-5 absolute w-screen flex overflow-auto cursor-pointer gap-2 top-20 left-0 bg-gray-950 h-screen bg-gray-900]",
+        className: "z-5 absolute w-screen flex overflow-auto gap-2 top-20 left-0 bg-gray-950 h-screen bg-gray-900]",
         children: [
             /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
                 className: "w-[70%] h-[60%]",
@@ -33724,74 +33731,109 @@ const VideoPlayer = ()=>{
                         className: "w-[100%] h-[100%]"
                     }, void 0, false, {
                         fileName: "src/Components/VideoPlayer.js",
-                        lineNumber: 14,
+                        lineNumber: 34,
                         columnNumber: 9
                     }, undefined),
                     " ",
-                    /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {}, void 0, false, {
+                    /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
+                        children: [
+                            /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("p", {
+                                className: "font-mono",
+                                children: watching.title
+                            }, void 0, false, {
+                                fileName: "src/Components/VideoPlayer.js",
+                                lineNumber: 41,
+                                columnNumber: 11
+                            }, undefined),
+                            /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("br", {}, void 0, false, {
+                                fileName: "src/Components/VideoPlayer.js",
+                                lineNumber: 42,
+                                columnNumber: 11
+                            }, undefined),
+                            /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("p", {
+                                className: "font-extralight",
+                                children: watching.overview
+                            }, void 0, false, {
+                                fileName: "src/Components/VideoPlayer.js",
+                                lineNumber: 43,
+                                columnNumber: 11
+                            }, undefined)
+                        ]
+                    }, void 0, true, {
                         fileName: "src/Components/VideoPlayer.js",
-                        lineNumber: 20,
+                        lineNumber: 40,
                         columnNumber: 9
                     }, undefined)
                 ]
             }, void 0, true, {
                 fileName: "src/Components/VideoPlayer.js",
-                lineNumber: 13,
+                lineNumber: 33,
                 columnNumber: 7
             }, undefined),
             /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
-                className: "right-0 top-0",
+                className: "right-0 bg-gray-700 top-0",
                 children: movies.length && movies.map((movie, i)=>{
                     return /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
-                        onClick: ()=>{},
-                        className: "ml-1 rounded-md flex",
+                        onClick: ()=>{
+                            navigate(`/watch/${movie.key}?id=${movie.id}`);
+                            dispatch((0, _videoStore.setWatching)(movie));
+                        },
+                        className: " mb-1 cursor-pointer flex",
                         children: [
                             /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("img", {
-                                className: "h-40",
+                                className: "h-40 rounded-tr-md rounded-br-md",
                                 src: `https://image.tmdb.org/t/p/original/${movie.poster_path}`,
                                 alt: ""
                             }, void 0, false, {
                                 fileName: "src/Components/VideoPlayer.js",
-                                lineNumber: 31,
+                                lineNumber: 58,
                                 columnNumber: 17
                             }, undefined),
                             /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("p", {
-                                className: "ml-2 w-100",
+                                className: "ml-2 w-100 font-light",
                                 children: [
                                     movie.title || movie.original_title,
-                                    " |",
-                                    " ",
+                                    " | ",
+                                    /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("br", {}, void 0, false, {
+                                        fileName: "src/Components/VideoPlayer.js",
+                                        lineNumber: 64,
+                                        columnNumber: 59
+                                    }, undefined),
                                     movie.overview.slice(0, 40),
                                     "..."
                                 ]
                             }, void 0, true, {
                                 fileName: "src/Components/VideoPlayer.js",
-                                lineNumber: 36,
+                                lineNumber: 63,
                                 columnNumber: 17
                             }, undefined)
                         ]
                     }, movie.id + i, true, {
                         fileName: "src/Components/VideoPlayer.js",
-                        lineNumber: 26,
+                        lineNumber: 50,
                         columnNumber: 15
                     }, undefined);
                 })
             }, void 0, false, {
                 fileName: "src/Components/VideoPlayer.js",
-                lineNumber: 22,
+                lineNumber: 46,
                 columnNumber: 7
             }, undefined)
         ]
     }, void 0, true, {
         fileName: "src/Components/VideoPlayer.js",
-        lineNumber: 12,
+        lineNumber: 32,
         columnNumber: 5
     }, undefined);
 };
-_s(VideoPlayer, "WtKlLLVPxQB1BJmwOYuglifVieU=", false, function() {
+_s(VideoPlayer, "KNppdmZy/1+LInbFXGX8WE5keq0=", false, function() {
     return [
         (0, _reactRouter.useParams),
-        (0, _reactRedux.useSelector)
+        (0, _reactRedux.useSelector),
+        (0, _reactRouter.useNavigate),
+        (0, _reactRedux.useDispatch),
+        (0, _reactRedux.useSelector),
+        (0, _reactRouter.useSearchParams)
     ];
 });
 _c = VideoPlayer;
@@ -33804,7 +33846,7 @@ $RefreshReg$(_c, "VideoPlayer");
   globalThis.$RefreshReg$ = prevRefreshReg;
   globalThis.$RefreshSig$ = prevRefreshSig;
 }
-},{"react/jsx-dev-runtime":"dVPUn","react":"jMk1U","react-router":"2jawN","@parcel/transformer-js/src/esmodule-helpers.js":"jnFvT","@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js":"7h6Pi","./MovieCard":"1X8r0","react-redux":"hbNxT"}],"9wEa6":[function(require,module,exports,__globalThis) {
+},{"react/jsx-dev-runtime":"dVPUn","react":"jMk1U","react-router":"2jawN","@parcel/transformer-js/src/esmodule-helpers.js":"jnFvT","@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js":"7h6Pi","react-redux":"hbNxT","../utils/videoStore":"co3Qq","../../privateKeys":"bl3Ql"}],"9wEa6":[function(require,module,exports,__globalThis) {
 var $parcel$ReactRefreshHelpers$de64 = require("@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js");
 $parcel$ReactRefreshHelpers$de64.init();
 var prevRefreshReg = globalThis.$RefreshReg$;

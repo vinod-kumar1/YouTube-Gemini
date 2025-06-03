@@ -11,7 +11,7 @@ let videoStore = createSlice({
     setStore: (state, action) => {
       state.storedVideos = [...state.storedVideos, action.payload];
     },
-    setWatvhing: (state, action) => {
+    setWatching: (state, action) => {
       state.watchingVideo = action.payload;
     },
     setPage: (state) => (state.page += 1),
@@ -19,4 +19,4 @@ let videoStore = createSlice({
 });
 
 export default videoStore.reducer;
-export let { setStore, setWatvhing } = videoStore.actions;
+export let { setStore, setWatching } = videoStore.actions;
