@@ -3,6 +3,7 @@ import { useNavigate, useParams, useSearchParams } from "react-router";
 import { privateKey } from "../../privateKeys";
 import { useDispatch, useSelector } from "react-redux";
 import { setWatching } from "../utils/videoStore";
+import CommentsSection from "./CommentsSection";
 
 const VideoPlayer = () => {
   let { yt_key } = useParams();
@@ -14,6 +15,7 @@ const VideoPlayer = () => {
 
   useEffect(() => {
     if (!watching.title) {
+      console.log("test");
       let id = searchParams.get("id");
       fetch(
         `https://api.themoviedb.org/3/movie/${id}?language=en-US`,
@@ -21,8 +23,7 @@ const VideoPlayer = () => {
       )
         .then((res) => res.json())
         .then((json) => {
-          console.log("wat", json.results[0]);
-          dispatch(setWatching(json.results[0]));
+          dispatch(setWatching(json));
         })
         .catch(console.log);
     }
@@ -37,13 +38,15 @@ const VideoPlayer = () => {
           allowFullScreen
           className="w-[100%] h-[100%]"
         ></iframe>{" "}
-        <div>
-          <p className="font-mono">{watching.title}</p>
+        <div className="relative left-2 font-bold">
+          <p className="font-mono relative left-2 hover:underline">
+            {watching.title}
+          </p>
           <br />
           <p className="font-extralight">{watching.overview}</p>
         </div>
       </div>
-      <div className="right-0 bg-gray-700 top-0">
+      <div className="right-0  top-0">
         {movies.length &&
           movies.map((movie, i) => {
             return (
@@ -68,6 +71,7 @@ const VideoPlayer = () => {
             );
           })}
       </div>
+      <CommentsSection videoKey={yt_key} />
     </div>
   );
 };

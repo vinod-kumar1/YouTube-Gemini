@@ -4,7 +4,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { setStore } from "../utils/videoStore";
 import { privateKey } from "../../privateKeys";
 import MovieCard from "./MovieCard";
-import { Outlet } from "react-router";
+import { Outlet, useNavigate } from "react-router";
 
 export let SidebarContext = createContext(null);
 
@@ -13,6 +13,7 @@ const Header = () => {
   let movies = useSelector((state) => state.videos.storedVideos);
   let page = useSelector((state) => state.videos.page);
   let dispatch = useDispatch();
+  let navigate = useNavigate();
 
   console.log(movies);
 
@@ -64,9 +65,9 @@ const Header = () => {
   }, []);
 
   return (
-    <div className="text-white font-light bg-[#0f0f0f] h-[100%] container">
+    <div className="text-white font-light bg-[#0f0f0f] w-screen h-[100%] container">
       <div className="sticky top-0 z-4 bg-black">
-        <div className="absolute left-2 top-5">
+        <div className="absolute top-5">
           <button
             className="relative group cursor-pointer z-2"
             onClick={() => showSidebar((p) => !p)}
@@ -90,10 +91,11 @@ const Header = () => {
             <img
               src="https://www.gstatic.com/youtube/img/branding/favicon/favicon_144x144_v2.png
           "
+              onClick={() => navigate("/")}
               alt="yt-logo"
-              className="w-10"
+              className="w-10 cursor-pointer"
             />
-            <span className="font-light text-2xl text-white">
+            <span className="yout font-light text-2xl text-white">
               YouTube <sup className="font-extralight">IN</sup>
             </span>
           </div>

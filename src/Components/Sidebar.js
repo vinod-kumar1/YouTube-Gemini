@@ -1,25 +1,27 @@
 const Sidebar = ({ sidebar }) => {
   return (
     <div
-      className={`absolute top-20 left-0 bg-black px-1 h-${
-        sidebar ? "screen" : "max"
-      } w-${sidebar ? 40 : "max"} z-${sidebar ? 3 : 1}`}
+      className={`absolute top-20 left-0 bg-black px-1 h-screen z-30 ${
+        sidebar ? "w-40" : "w-10"
+      } ${!sidebar && "bg-transparent"}`}
     >
-      <div
-        className={
-          "z-1 text-white hover:text-red-500 *:cursor-pointer flex mt-4 relative left-2"
-        }
-      >
-        <svg
-          xmlns="http://www.w3.org/2000/svg"
-          viewBox="0 0 24 24"
-          fill="currentColor"
-          className="w-6 h-6 z-3 -left-2 relative hover:underline"
+      {sidebar && (
+        <div
+          className={
+            "text-white hover:text-red-500 *:cursor-pointer flex mt-4 relative left-2"
+          }
         >
-          <path d="M10 20v-6h4v6h5v-8h3L12 3 2 12h3v8z" />
-        </svg>
-        {sidebar && <span className={`z-${sidebar ? 2 : 1} ml-2 `}>Home</span>}
-      </div>
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            viewBox="0 0 24 24"
+            fill="currentColor"
+            className="w-6 h-6 z-3 -left-2 relative hover:underline"
+          >
+            <path d="M10 20v-6h4v6h5v-8h3L12 3 2 12h3v8z" />
+          </svg>
+          <span className="">Home</span>
+        </div>
+      )}
     </div>
   );
 };

@@ -725,7 +725,7 @@ let router = (0, _reactRouter.createBrowserRouter)([
   globalThis.$RefreshReg$ = prevRefreshReg;
   globalThis.$RefreshSig$ = prevRefreshSig;
 }
-},{"react/jsx-dev-runtime":"dVPUn","react-dom/client":"hrvwu","./styles.css":"lW6qc","react-router":"2jawN","./Components/Header":"50ygr","react-redux":"hbNxT","./utils/appStore":"dpIkN","@parcel/transformer-js/src/esmodule-helpers.js":"jnFvT","@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js":"7h6Pi","./Components/VideoPlayer":"l4oES","./Components/MovieContainer":"9wEa6"}],"dVPUn":[function(require,module,exports,__globalThis) {
+},{"react/jsx-dev-runtime":"dVPUn","react-dom/client":"hrvwu","./styles.css":"lW6qc","react-router":"2jawN","./Components/Header":"50ygr","react-redux":"hbNxT","./Components/VideoPlayer":"l4oES","./utils/appStore":"dpIkN","./Components/MovieContainer":"9wEa6","@parcel/transformer-js/src/esmodule-helpers.js":"jnFvT","@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js":"7h6Pi"}],"dVPUn":[function(require,module,exports,__globalThis) {
 'use strict';
 module.exports = require("ee51401569654d91");
 
@@ -26003,6 +26003,7 @@ const Header = ()=>{
     let movies = (0, _reactRedux.useSelector)((state)=>state.videos.storedVideos);
     let page = (0, _reactRedux.useSelector)((state)=>state.videos.page);
     let dispatch = (0, _reactRedux.useDispatch)();
+    let navigate = (0, _reactRouter.useNavigate)();
     console.log(movies);
     (0, _react.useEffect)(()=>{
         async function run() {
@@ -26046,12 +26047,12 @@ const Header = ()=>{
         observer.observe(document.querySelector(".container"));
     }, []);
     return /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
-        className: "text-white font-light bg-[#0f0f0f] h-[100%] container",
+        className: "text-white font-light bg-[#0f0f0f] w-screen h-[100%] container",
         children: /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
             className: "sticky top-0 z-4 bg-black",
             children: [
                 /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
-                    className: "absolute left-2 top-5",
+                    className: "absolute top-5",
                     children: /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("button", {
                         className: "relative group cursor-pointer z-2",
                         onClick: ()=>showSidebar((p)=>!p),
@@ -26064,21 +26065,21 @@ const Header = ()=>{
                                         className: "bg-white h-[2px] w-7 transform transition-all duration-300 origin-left group-focus:translate-x-10"
                                     }, void 0, false, {
                                         fileName: "src/Components/Header.js",
-                                        lineNumber: 76,
+                                        lineNumber: 77,
                                         columnNumber: 17
                                     }, undefined),
                                     /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
                                         className: "bg-white h-[2px] w-7 rounded transform transition-all duration-300 group-focus:translate-x-10 delay-75"
                                     }, void 0, false, {
                                         fileName: "src/Components/Header.js",
-                                        lineNumber: 77,
+                                        lineNumber: 78,
                                         columnNumber: 17
                                     }, undefined),
                                     /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
                                         className: "bg-white h-[2px] w-7 transform transition-all duration-300 origin-left group-focus:translate-x-10 delay-150"
                                     }, void 0, false, {
                                         fileName: "src/Components/Header.js",
-                                        lineNumber: 78,
+                                        lineNumber: 79,
                                         columnNumber: 17
                                     }, undefined),
                                     /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
@@ -26088,41 +26089,41 @@ const Header = ()=>{
                                                 className: "absolute bg-white h-[2px] w-5 transform transition-all duration-500 rotate-0 delay-300 group-focus:rotate-45"
                                             }, void 0, false, {
                                                 fileName: "src/Components/Header.js",
-                                                lineNumber: 81,
+                                                lineNumber: 82,
                                                 columnNumber: 19
                                             }, undefined),
                                             /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
                                                 className: "absolute bg-white h-[2px] w-5 transform transition-all duration-500 -rotate-0 delay-300 group-focus:-rotate-45"
                                             }, void 0, false, {
                                                 fileName: "src/Components/Header.js",
-                                                lineNumber: 82,
+                                                lineNumber: 83,
                                                 columnNumber: 19
                                             }, undefined)
                                         ]
                                     }, void 0, true, {
                                         fileName: "src/Components/Header.js",
-                                        lineNumber: 80,
+                                        lineNumber: 81,
                                         columnNumber: 17
                                     }, undefined)
                                 ]
                             }, void 0, true, {
                                 fileName: "src/Components/Header.js",
-                                lineNumber: 75,
+                                lineNumber: 76,
                                 columnNumber: 15
                             }, undefined)
                         }, void 0, false, {
                             fileName: "src/Components/Header.js",
-                            lineNumber: 74,
+                            lineNumber: 75,
                             columnNumber: 13
                         }, undefined)
                     }, void 0, false, {
                         fileName: "src/Components/Header.js",
-                        lineNumber: 70,
+                        lineNumber: 71,
                         columnNumber: 11
                     }, undefined)
                 }, void 0, false, {
                     fileName: "src/Components/Header.js",
-                    lineNumber: 69,
+                    lineNumber: 70,
                     columnNumber: 9
                 }, undefined),
                 /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
@@ -26133,15 +26134,16 @@ const Header = ()=>{
                             children: [
                                 /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("img", {
                                     src: "https://www.gstatic.com/youtube/img/branding/favicon/favicon_144x144_v2.png ",
+                                    onClick: ()=>navigate("/"),
                                     alt: "yt-logo",
-                                    className: "w-10"
+                                    className: "w-10 cursor-pointer"
                                 }, void 0, false, {
                                     fileName: "src/Components/Header.js",
-                                    lineNumber: 90,
+                                    lineNumber: 91,
                                     columnNumber: 13
                                 }, undefined),
                                 /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("span", {
-                                    className: "font-light text-2xl text-white",
+                                    className: "yout font-light text-2xl text-white",
                                     children: [
                                         "YouTube ",
                                         /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("sup", {
@@ -26149,19 +26151,19 @@ const Header = ()=>{
                                             children: "IN"
                                         }, void 0, false, {
                                             fileName: "src/Components/Header.js",
-                                            lineNumber: 97,
+                                            lineNumber: 99,
                                             columnNumber: 23
                                         }, undefined)
                                     ]
                                 }, void 0, true, {
                                     fileName: "src/Components/Header.js",
-                                    lineNumber: 96,
+                                    lineNumber: 98,
                                     columnNumber: 13
                                 }, undefined)
                             ]
                         }, void 0, true, {
                             fileName: "src/Components/Header.js",
-                            lineNumber: 89,
+                            lineNumber: 90,
                             columnNumber: 11
                         }, undefined),
                         /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
@@ -26173,7 +26175,7 @@ const Header = ()=>{
                                     placeholder: "Search"
                                 }, void 0, false, {
                                     fileName: "src/Components/Header.js",
-                                    lineNumber: 101,
+                                    lineNumber: 103,
                                     columnNumber: 13
                                 }, undefined),
                                 /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("button", {
@@ -26181,13 +26183,13 @@ const Header = ()=>{
                                     children: "\uD83D\uDD0E"
                                 }, void 0, false, {
                                     fileName: "src/Components/Header.js",
-                                    lineNumber: 106,
+                                    lineNumber: 108,
                                     columnNumber: 13
                                 }, undefined)
                             ]
                         }, void 0, true, {
                             fileName: "src/Components/Header.js",
-                            lineNumber: 100,
+                            lineNumber: 102,
                             columnNumber: 11
                         }, undefined),
                         /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("img", {
@@ -26196,44 +26198,45 @@ const Header = ()=>{
                             className: "rounded-4xl w-10"
                         }, void 0, false, {
                             fileName: "src/Components/Header.js",
-                            lineNumber: 109,
+                            lineNumber: 111,
                             columnNumber: 11
                         }, undefined)
                     ]
                 }, void 0, true, {
                     fileName: "src/Components/Header.js",
-                    lineNumber: 88,
+                    lineNumber: 89,
                     columnNumber: 9
                 }, undefined),
                 /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _reactRouter.Outlet), {}, void 0, false, {
                     fileName: "src/Components/Header.js",
-                    lineNumber: 115,
+                    lineNumber: 117,
                     columnNumber: 9
                 }, undefined),
                 /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _sidebarDefault.default), {
                     sidebar: sidebar
                 }, void 0, false, {
                     fileName: "src/Components/Header.js",
-                    lineNumber: 116,
+                    lineNumber: 118,
                     columnNumber: 9
                 }, undefined)
             ]
         }, void 0, true, {
             fileName: "src/Components/Header.js",
-            lineNumber: 68,
+            lineNumber: 69,
             columnNumber: 7
         }, undefined)
     }, void 0, false, {
         fileName: "src/Components/Header.js",
-        lineNumber: 67,
+        lineNumber: 68,
         columnNumber: 5
     }, undefined);
 };
-_s(Header, "org/ppJuCgyhPxjRY2PsiubREsE=", false, function() {
+_s(Header, "rbM+sklNpBRGx/aF4xg4STew960=", false, function() {
     return [
         (0, _reactRedux.useSelector),
         (0, _reactRedux.useSelector),
-        (0, _reactRedux.useDispatch)
+        (0, _reactRedux.useDispatch),
+        (0, _reactRouter.useNavigate)
     ];
 });
 _c = Header;
@@ -26246,7 +26249,7 @@ $RefreshReg$(_c, "Header");
   globalThis.$RefreshReg$ = prevRefreshReg;
   globalThis.$RefreshSig$ = prevRefreshSig;
 }
-},{"react/jsx-dev-runtime":"dVPUn","react":"jMk1U","./Sidebar":"7nIKd","react-redux":"hbNxT","../utils/videoStore":"co3Qq","@parcel/transformer-js/src/esmodule-helpers.js":"jnFvT","@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js":"7h6Pi","../../privateKeys":"bl3Ql","./MovieCard":"1X8r0","react-router":"2jawN"}],"7nIKd":[function(require,module,exports,__globalThis) {
+},{"react/jsx-dev-runtime":"dVPUn","react":"jMk1U","./Sidebar":"7nIKd","react-redux":"hbNxT","../utils/videoStore":"co3Qq","../../privateKeys":"bl3Ql","./MovieCard":"1X8r0","react-router":"2jawN","@parcel/transformer-js/src/esmodule-helpers.js":"jnFvT","@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js":"7h6Pi"}],"7nIKd":[function(require,module,exports,__globalThis) {
 var $parcel$ReactRefreshHelpers$030d = require("@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js");
 $parcel$ReactRefreshHelpers$030d.init();
 var prevRefreshReg = globalThis.$RefreshReg$;
@@ -26259,9 +26262,9 @@ parcelHelpers.defineInteropFlag(exports);
 var _jsxDevRuntime = require("react/jsx-dev-runtime");
 const Sidebar = ({ sidebar })=>{
     return /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
-        className: `absolute top-20 left-0 bg-black px-1 h-${sidebar ? "screen" : "max"} w-${sidebar ? 40 : "max"} z-${sidebar ? 3 : 1}`,
-        children: /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
-            className: "z-1 text-white hover:text-red-500 *:cursor-pointer flex mt-4 relative left-2",
+        className: `absolute top-20 left-0 bg-black px-1 h-screen z-30 ${sidebar ? "w-40" : "w-10"} ${!sidebar && "bg-transparent"}`,
+        children: sidebar && /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
+            className: "text-white hover:text-red-500 *:cursor-pointer flex mt-4 relative left-2",
             children: [
                 /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("svg", {
                     xmlns: "http://www.w3.org/2000/svg",
@@ -26272,27 +26275,27 @@ const Sidebar = ({ sidebar })=>{
                         d: "M10 20v-6h4v6h5v-8h3L12 3 2 12h3v8z"
                     }, void 0, false, {
                         fileName: "src/Components/Sidebar.js",
-                        lineNumber: 19,
-                        columnNumber: 11
+                        lineNumber: 20,
+                        columnNumber: 13
                     }, undefined)
                 }, void 0, false, {
                     fileName: "src/Components/Sidebar.js",
-                    lineNumber: 13,
-                    columnNumber: 9
+                    lineNumber: 14,
+                    columnNumber: 11
                 }, undefined),
-                sidebar && /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("span", {
-                    className: `z-${sidebar ? 2 : 1} ml-2 `,
+                /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("span", {
+                    className: "",
                     children: "Home"
                 }, void 0, false, {
                     fileName: "src/Components/Sidebar.js",
-                    lineNumber: 21,
-                    columnNumber: 21
+                    lineNumber: 22,
+                    columnNumber: 11
                 }, undefined)
             ]
         }, void 0, true, {
             fileName: "src/Components/Sidebar.js",
-            lineNumber: 8,
-            columnNumber: 7
+            lineNumber: 9,
+            columnNumber: 9
         }, undefined)
     }, void 0, false, {
         fileName: "src/Components/Sidebar.js",
@@ -29596,29 +29599,31 @@ var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
 parcelHelpers.defineInteropFlag(exports);
 parcelHelpers.export(exports, "setStore", ()=>setStore);
 parcelHelpers.export(exports, "setWatching", ()=>setWatching);
+parcelHelpers.export(exports, "setVideoComments", ()=>setVideoComments);
 var _toolkit = require("@reduxjs/toolkit");
 let videoStore = (0, _toolkit.createSlice)({
     name: "yt_video",
     initialState: {
         storedVideos: [],
         watchingVideo: {},
-        page: 1
+        page: 1,
+        videoComments: []
     },
     reducers: {
         setStore: (state, action)=>{
-            state.storedVideos = [
-                ...state.storedVideos,
-                action.payload
-            ];
+            state.storedVideos.push(action.payload);
         },
         setWatching: (state, action)=>{
             state.watchingVideo = action.payload;
         },
-        setPage: (state)=>state.page += 1
+        setPage: (state)=>state.page += 1,
+        setVideoComments: (state, action)=>{
+            state.videoComments.push(action.payload);
+        }
     }
 });
 exports.default = videoStore.reducer;
-let { setStore, setWatching } = videoStore.actions;
+let { setStore, setWatching, setVideoComments } = videoStore.actions;
 
 },{"@reduxjs/toolkit":"fKS5f","@parcel/transformer-js/src/esmodule-helpers.js":"jnFvT"}],"fKS5f":[function(require,module,exports,__globalThis) {
 var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
@@ -33619,7 +33624,7 @@ const MovieCard = ({ movie, w })=>{
     let dispatch = (0, _reactRedux.useDispatch)();
     let { title, poster_path, overview, id, original_title, key } = movie;
     return /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
-        className: `rounded-md bg-gray-700 py-4 w-${w ? w : 60}`,
+        className: `rounded-md bg-gray-700 py-4 w-${w ? w : "60"}`,
         children: [
             /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("img", {
                 onClick: ()=>{
@@ -33670,20 +33675,7 @@ $RefreshReg$(_c, "MovieCard");
   globalThis.$RefreshReg$ = prevRefreshReg;
   globalThis.$RefreshSig$ = prevRefreshSig;
 }
-},{"react/jsx-dev-runtime":"dVPUn","react":"jMk1U","@parcel/transformer-js/src/esmodule-helpers.js":"jnFvT","@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js":"7h6Pi","react-router":"2jawN","react-redux":"hbNxT","../utils/videoStore":"co3Qq"}],"dpIkN":[function(require,module,exports,__globalThis) {
-var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
-parcelHelpers.defineInteropFlag(exports);
-var _toolkit = require("@reduxjs/toolkit");
-var _videoStore = require("./videoStore");
-var _videoStoreDefault = parcelHelpers.interopDefault(_videoStore);
-let appStore = (0, _toolkit.configureStore)({
-    reducer: {
-        videos: (0, _videoStoreDefault.default)
-    }
-});
-exports.default = appStore;
-
-},{"@reduxjs/toolkit":"fKS5f","./videoStore":"co3Qq","@parcel/transformer-js/src/esmodule-helpers.js":"jnFvT"}],"l4oES":[function(require,module,exports,__globalThis) {
+},{"react/jsx-dev-runtime":"dVPUn","react":"jMk1U","react-redux":"hbNxT","react-router":"2jawN","../utils/videoStore":"co3Qq","@parcel/transformer-js/src/esmodule-helpers.js":"jnFvT","@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js":"7h6Pi"}],"l4oES":[function(require,module,exports,__globalThis) {
 var $parcel$ReactRefreshHelpers$04cb = require("@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js");
 $parcel$ReactRefreshHelpers$04cb.init();
 var prevRefreshReg = globalThis.$RefreshReg$;
@@ -33700,6 +33692,8 @@ var _reactRouter = require("react-router");
 var _privateKeys = require("../../privateKeys");
 var _reactRedux = require("react-redux");
 var _videoStore = require("../utils/videoStore");
+var _commentsSection = require("./CommentsSection");
+var _commentsSectionDefault = parcelHelpers.interopDefault(_commentsSection);
 var _s = $RefreshSig$();
 const VideoPlayer = ()=>{
     _s();
@@ -33711,10 +33705,10 @@ const VideoPlayer = ()=>{
     let [searchParams] = (0, _reactRouter.useSearchParams)();
     (0, _react.useEffect)(()=>{
         if (!watching.title) {
+            console.log("test");
             let id = searchParams.get("id");
             fetch(`https://api.themoviedb.org/3/movie/${id}?language=en-US`, (0, _privateKeys.privateKey).options).then((res)=>res.json()).then((json)=>{
-                console.log("wat", json.results[0]);
-                dispatch((0, _videoStore.setWatching)(json.results[0]));
+                dispatch((0, _videoStore.setWatching)(json));
             }).catch(console.log);
         }
     }, []);
@@ -33731,23 +33725,24 @@ const VideoPlayer = ()=>{
                         className: "w-[100%] h-[100%]"
                     }, void 0, false, {
                         fileName: "src/Components/VideoPlayer.js",
-                        lineNumber: 34,
+                        lineNumber: 35,
                         columnNumber: 9
                     }, undefined),
                     " ",
                     /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
+                        className: "relative left-2 font-bold",
                         children: [
                             /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("p", {
-                                className: "font-mono",
+                                className: "font-mono relative left-2 hover:underline",
                                 children: watching.title
                             }, void 0, false, {
                                 fileName: "src/Components/VideoPlayer.js",
-                                lineNumber: 41,
+                                lineNumber: 42,
                                 columnNumber: 11
                             }, undefined),
                             /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("br", {}, void 0, false, {
                                 fileName: "src/Components/VideoPlayer.js",
-                                lineNumber: 42,
+                                lineNumber: 45,
                                 columnNumber: 11
                             }, undefined),
                             /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("p", {
@@ -33755,23 +33750,23 @@ const VideoPlayer = ()=>{
                                 children: watching.overview
                             }, void 0, false, {
                                 fileName: "src/Components/VideoPlayer.js",
-                                lineNumber: 43,
+                                lineNumber: 46,
                                 columnNumber: 11
                             }, undefined)
                         ]
                     }, void 0, true, {
                         fileName: "src/Components/VideoPlayer.js",
-                        lineNumber: 40,
+                        lineNumber: 41,
                         columnNumber: 9
                     }, undefined)
                 ]
             }, void 0, true, {
                 fileName: "src/Components/VideoPlayer.js",
-                lineNumber: 33,
+                lineNumber: 34,
                 columnNumber: 7
             }, undefined),
             /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
-                className: "right-0 bg-gray-700 top-0",
+                className: "right-0  top-0",
                 children: movies.length && movies.map((movie, i)=>{
                     return /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
                         onClick: ()=>{
@@ -33786,7 +33781,7 @@ const VideoPlayer = ()=>{
                                 alt: ""
                             }, void 0, false, {
                                 fileName: "src/Components/VideoPlayer.js",
-                                lineNumber: 58,
+                                lineNumber: 61,
                                 columnNumber: 17
                             }, undefined),
                             /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("p", {
@@ -33796,7 +33791,7 @@ const VideoPlayer = ()=>{
                                     " | ",
                                     /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("br", {}, void 0, false, {
                                         fileName: "src/Components/VideoPlayer.js",
-                                        lineNumber: 64,
+                                        lineNumber: 67,
                                         columnNumber: 59
                                     }, undefined),
                                     movie.overview.slice(0, 40),
@@ -33804,25 +33799,32 @@ const VideoPlayer = ()=>{
                                 ]
                             }, void 0, true, {
                                 fileName: "src/Components/VideoPlayer.js",
-                                lineNumber: 63,
+                                lineNumber: 66,
                                 columnNumber: 17
                             }, undefined)
                         ]
                     }, movie.id + i, true, {
                         fileName: "src/Components/VideoPlayer.js",
-                        lineNumber: 50,
+                        lineNumber: 53,
                         columnNumber: 15
                     }, undefined);
                 })
             }, void 0, false, {
                 fileName: "src/Components/VideoPlayer.js",
-                lineNumber: 46,
+                lineNumber: 49,
+                columnNumber: 7
+            }, undefined),
+            /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _commentsSectionDefault.default), {
+                videoKey: yt_key
+            }, void 0, false, {
+                fileName: "src/Components/VideoPlayer.js",
+                lineNumber: 74,
                 columnNumber: 7
             }, undefined)
         ]
     }, void 0, true, {
         fileName: "src/Components/VideoPlayer.js",
-        lineNumber: 32,
+        lineNumber: 33,
         columnNumber: 5
     }, undefined);
 };
@@ -33846,7 +33848,151 @@ $RefreshReg$(_c, "VideoPlayer");
   globalThis.$RefreshReg$ = prevRefreshReg;
   globalThis.$RefreshSig$ = prevRefreshSig;
 }
-},{"react/jsx-dev-runtime":"dVPUn","react":"jMk1U","react-router":"2jawN","@parcel/transformer-js/src/esmodule-helpers.js":"jnFvT","@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js":"7h6Pi","react-redux":"hbNxT","../utils/videoStore":"co3Qq","../../privateKeys":"bl3Ql"}],"9wEa6":[function(require,module,exports,__globalThis) {
+},{"react/jsx-dev-runtime":"dVPUn","react":"jMk1U","react-router":"2jawN","../../privateKeys":"bl3Ql","react-redux":"hbNxT","../utils/videoStore":"co3Qq","./CommentsSection":"ecYfu","@parcel/transformer-js/src/esmodule-helpers.js":"jnFvT","@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js":"7h6Pi"}],"ecYfu":[function(require,module,exports,__globalThis) {
+var $parcel$ReactRefreshHelpers$3fa1 = require("@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js");
+$parcel$ReactRefreshHelpers$3fa1.init();
+var prevRefreshReg = globalThis.$RefreshReg$;
+var prevRefreshSig = globalThis.$RefreshSig$;
+$parcel$ReactRefreshHelpers$3fa1.prelude(module);
+
+try {
+var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
+parcelHelpers.defineInteropFlag(exports);
+var _jsxDevRuntime = require("react/jsx-dev-runtime");
+var _react = require("react");
+var _reactDefault = parcelHelpers.interopDefault(_react);
+var _videoStore = require("../utils/videoStore");
+var _reactRedux = require("react-redux");
+var _s = $RefreshSig$();
+const CommentsSection = ({ videoKey })=>{
+    _s();
+    let videoComments = (0, _reactRedux.useSelector)((state)=>state.videos.videoComments);
+    let [inp, setInp] = (0, _react.useState)("");
+    let dispatch = (0, _reactRedux.useDispatch)();
+    return /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
+        className: "absolute top-150 left-2 right-[300px]",
+        children: [
+            /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("h3", {
+                className: "text-lg font-semibold mb-4",
+                children: "Comments"
+            }, void 0, false, {
+                fileName: "src/Components/CommentsSection.js",
+                lineNumber: 12,
+                columnNumber: 7
+            }, undefined),
+            /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
+                className: "relative flex gap-2",
+                children: [
+                    /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("img", {
+                        src: "https://yt3.ggpht.com/yti/ANjgQV_KCdTqkS7bKkYIONaWT6byiaEmykdw3BNwOTeZjavRLNU=s88-c-k-c0x00ffffff-no-rj",
+                        alt: "user-icon",
+                        className: "rounded-4xl w-10"
+                    }, void 0, false, {
+                        fileName: "src/Components/CommentsSection.js",
+                        lineNumber: 14,
+                        columnNumber: 9
+                    }, undefined),
+                    /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("input", {
+                        value: inp,
+                        onChange: (e)=>setInp(e.target.value),
+                        type: "text",
+                        className: "w-[60%] border-b-[1px] border-gray-600 outline-none p-2 rounded",
+                        placeholder: "Add a comment..."
+                    }, void 0, false, {
+                        fileName: "src/Components/CommentsSection.js",
+                        lineNumber: 19,
+                        columnNumber: 9
+                    }, undefined),
+                    /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("button", {
+                        onClick: ()=>setInp(""),
+                        className: "hover:bg-gray-700 py-1 px-4 rounded-4xl cursor-pointer",
+                        children: "X"
+                    }, void 0, false, {
+                        fileName: "src/Components/CommentsSection.js",
+                        lineNumber: 26,
+                        columnNumber: 9
+                    }, undefined),
+                    /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("button", {
+                        onClick: ()=>dispatch((0, _videoStore.setVideoComments)({
+                                [videoKey]: {
+                                    value: inp,
+                                    likes: 0,
+                                    dislikes: 0
+                                }
+                            })),
+                        className: "bg-blue-500 py-1 px-4 rounded-4xl cursor-pointer hover:bg-blue-600",
+                        children: "Comment"
+                    }, void 0, false, {
+                        fileName: "src/Components/CommentsSection.js",
+                        lineNumber: 32,
+                        columnNumber: 9
+                    }, undefined)
+                ]
+            }, void 0, true, {
+                fileName: "src/Components/CommentsSection.js",
+                lineNumber: 13,
+                columnNumber: 7
+            }, undefined),
+            /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
+                children: videoComments.map((comment)=>{
+                    let { value, likes, dislikes } = comment[videoKey];
+                    return /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
+                        className: "bg-gray-600 w-[60%] relative",
+                        children: /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("p", {
+                            children: value
+                        }, void 0, false, {
+                            fileName: "src/Components/CommentsSection.js",
+                            lineNumber: 51,
+                            columnNumber: 15
+                        }, undefined)
+                    }, value, false, {
+                        fileName: "src/Components/CommentsSection.js",
+                        lineNumber: 50,
+                        columnNumber: 13
+                    }, undefined);
+                })
+            }, void 0, false, {
+                fileName: "src/Components/CommentsSection.js",
+                lineNumber: 46,
+                columnNumber: 7
+            }, undefined)
+        ]
+    }, void 0, true, {
+        fileName: "src/Components/CommentsSection.js",
+        lineNumber: 11,
+        columnNumber: 5
+    }, undefined);
+};
+_s(CommentsSection, "+3KVGPKOSFohPOhhoRiQrbYBOZ4=", false, function() {
+    return [
+        (0, _reactRedux.useSelector),
+        (0, _reactRedux.useDispatch)
+    ];
+});
+_c = CommentsSection;
+exports.default = CommentsSection;
+var _c;
+$RefreshReg$(_c, "CommentsSection");
+
+  $parcel$ReactRefreshHelpers$3fa1.postlude(module);
+} finally {
+  globalThis.$RefreshReg$ = prevRefreshReg;
+  globalThis.$RefreshSig$ = prevRefreshSig;
+}
+},{"react/jsx-dev-runtime":"dVPUn","react":"jMk1U","../utils/videoStore":"co3Qq","react-redux":"hbNxT","@parcel/transformer-js/src/esmodule-helpers.js":"jnFvT","@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js":"7h6Pi"}],"dpIkN":[function(require,module,exports,__globalThis) {
+var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
+parcelHelpers.defineInteropFlag(exports);
+var _toolkit = require("@reduxjs/toolkit");
+var _videoStore = require("./videoStore");
+var _videoStoreDefault = parcelHelpers.interopDefault(_videoStore);
+let appStore = (0, _toolkit.configureStore)({
+    reducer: {
+        videos: (0, _videoStoreDefault.default)
+    }
+});
+exports.default = appStore;
+
+},{"@reduxjs/toolkit":"fKS5f","./videoStore":"co3Qq","@parcel/transformer-js/src/esmodule-helpers.js":"jnFvT"}],"9wEa6":[function(require,module,exports,__globalThis) {
 var $parcel$ReactRefreshHelpers$de64 = require("@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js");
 $parcel$ReactRefreshHelpers$de64.init();
 var prevRefreshReg = globalThis.$RefreshReg$;
@@ -33867,7 +34013,7 @@ const MovieContainer = ()=>{
     _s();
     let movies = (0, _reactRedux.useSelector)((state)=>state.videos.storedVideos);
     return /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
-        className: "transition-all relative left-10 ease-in-out duration-2000 flex flex-wrap gap-2 justify-center overflow-auto mx-auto movieContainer",
+        className: "transition-all relative z-2 ease-in-out duration-2000 flex flex-wrap gap-2 justify-center movieContainer",
         children: movies.length && movies.map((movie)=>{
             return movie.poster_path && /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _movieCardDefault.default), {
                 movie: movie

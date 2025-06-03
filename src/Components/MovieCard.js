@@ -9,7 +9,7 @@ const MovieCard = ({ movie, w }) => {
 
   let { title, poster_path, overview, id, original_title, key } = movie;
   return (
-    <div className={`rounded-md bg-gray-700 py-4 w-${w ? w : 60}`}>
+    <div className={`rounded-md bg-gray-700 py-4 w-${w ? w : "60"}`}>
       <img
         onClick={() => {
           navigate(`/watch/${key}?id=${id}`);
