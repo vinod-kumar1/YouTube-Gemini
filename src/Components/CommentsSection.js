@@ -30,20 +30,21 @@ const CommentsSection = ({ videoKey }) => {
           X
         </button>
         <button
-          onClick={() =>
+          onClick={() => {
             dispatch(
               setVideoComments({
                 [videoKey]: { value: inp, likes: 0, dislikes: 0 },
               })
-            )
-          }
+            );
+            setInp("");
+          }}
           className="bg-blue-500 py-1 px-4 rounded-4xl cursor-pointer hover:bg-blue-600"
         >
           Comment
         </button>
       </div>
 
-      <div>
+      <div className="mt-10 relative left-10">
         {videoComments.map((comment) => {
           let { value, likes, dislikes } = comment[videoKey];
           return (

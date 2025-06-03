@@ -33913,13 +33913,16 @@ const CommentsSection = ({ videoKey })=>{
                         columnNumber: 9
                     }, undefined),
                     /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("button", {
-                        onClick: ()=>dispatch((0, _videoStore.setVideoComments)({
+                        onClick: ()=>{
+                            dispatch((0, _videoStore.setVideoComments)({
                                 [videoKey]: {
                                     value: inp,
                                     likes: 0,
                                     dislikes: 0
                                 }
-                            })),
+                            }));
+                            setInp("");
+                        },
                         className: "bg-blue-500 py-1 px-4 rounded-4xl cursor-pointer hover:bg-blue-600",
                         children: "Comment"
                     }, void 0, false, {
@@ -33934,26 +33937,37 @@ const CommentsSection = ({ videoKey })=>{
                 columnNumber: 7
             }, undefined),
             /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
+                className: "mt-10 relative left-10",
                 children: videoComments.map((comment)=>{
                     let { value, likes, dislikes } = comment[videoKey];
                     return /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
                         className: "bg-gray-600 w-[60%] relative",
-                        children: /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("p", {
-                            children: value
-                        }, void 0, false, {
-                            fileName: "src/Components/CommentsSection.js",
-                            lineNumber: 51,
-                            columnNumber: 15
-                        }, undefined)
-                    }, value, false, {
+                        children: [
+                            /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("img", {
+                                className: "bg-(image-M)",
+                                alt: ""
+                            }, void 0, false, {
+                                fileName: "src/Components/CommentsSection.js",
+                                lineNumber: 52,
+                                columnNumber: 15
+                            }, undefined),
+                            /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("p", {
+                                children: value
+                            }, void 0, false, {
+                                fileName: "src/Components/CommentsSection.js",
+                                lineNumber: 53,
+                                columnNumber: 15
+                            }, undefined)
+                        ]
+                    }, value, true, {
                         fileName: "src/Components/CommentsSection.js",
-                        lineNumber: 50,
+                        lineNumber: 51,
                         columnNumber: 13
                     }, undefined);
                 })
             }, void 0, false, {
                 fileName: "src/Components/CommentsSection.js",
-                lineNumber: 46,
+                lineNumber: 47,
                 columnNumber: 7
             }, undefined)
         ]
