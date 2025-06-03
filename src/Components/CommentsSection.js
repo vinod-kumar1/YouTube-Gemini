@@ -45,14 +45,16 @@ const CommentsSection = ({ videoKey }) => {
       </div>
 
       <div className="mt-10 relative left-10">
-        {videoComments.map((comment) => {
-          let { value, likes, dislikes } = comment[videoKey];
-          return (
-            <div key={value} className="bg-gray-600 w-[60%] relative">
-              <p>{value}</p>
-            </div>
-          );
-        })}
+        {videoComments
+          .filter((obj) => videoKey in obj)
+          .map((comment) => {
+            let { value, likes, dislikes } = comment[videoKey];
+            return (
+              <div key={value} className="bg-gray-600 w-[60%] relative">
+                <p>{value}</p>
+              </div>
+            );
+          })}
       </div>
     </div>
   );

@@ -15,7 +15,6 @@ const VideoPlayer = () => {
 
   useEffect(() => {
     if (!watching.title) {
-      console.log("test");
       let id = searchParams.get("id");
       fetch(
         `https://api.themoviedb.org/3/movie/${id}?language=en-US`,
@@ -33,7 +32,7 @@ const VideoPlayer = () => {
     <div className="z-5 absolute w-screen flex overflow-auto gap-2 top-20 left-0 bg-gray-950 h-screen bg-gray-900]">
       <div className="w-[70%] h-[60%]">
         <iframe
-          src={`https://www.youtube.com/embed/${yt_key}`}
+          src={`https://www.youtube.com/embed/${yt_key}?autoplay=1`}
           allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
           allowFullScreen
           className="w-[100%] h-[100%]"
