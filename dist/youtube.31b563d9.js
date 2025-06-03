@@ -33942,24 +33942,14 @@ const CommentsSection = ({ videoKey })=>{
                     let { value, likes, dislikes } = comment[videoKey];
                     return /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
                         className: "bg-gray-600 w-[60%] relative",
-                        children: [
-                            /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("img", {
-                                className: "bg-(image-M)",
-                                alt: ""
-                            }, void 0, false, {
-                                fileName: "src/Components/CommentsSection.js",
-                                lineNumber: 52,
-                                columnNumber: 15
-                            }, undefined),
-                            /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("p", {
-                                children: value
-                            }, void 0, false, {
-                                fileName: "src/Components/CommentsSection.js",
-                                lineNumber: 53,
-                                columnNumber: 15
-                            }, undefined)
-                        ]
-                    }, value, true, {
+                        children: /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("p", {
+                            children: value
+                        }, void 0, false, {
+                            fileName: "src/Components/CommentsSection.js",
+                            lineNumber: 52,
+                            columnNumber: 15
+                        }, undefined)
+                    }, value, false, {
                         fileName: "src/Components/CommentsSection.js",
                         lineNumber: 51,
                         columnNumber: 13
