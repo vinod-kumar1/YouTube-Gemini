@@ -3,7 +3,9 @@ import "./styles.css";
 import { createBrowserRouter, RouterProvider } from "react-router";
 import Header from "./Components/Header";
 import { Provider } from "react-redux";
+import VideoPlayer from "./Components/VideoPlayer";
 import appStore from "./utils/appStore";
+import MovieContainer from "./Components/MovieContainer";
 
 let router = createBrowserRouter([
   {
@@ -11,7 +13,13 @@ let router = createBrowserRouter([
     Component: Header,
     children: [
       {
-        path: "/watch?v=:yt_key",
+        index: true,
+        Component: MovieContainer,
+      },
+      {
+        path: "watch/:yt_key",
+        Component: VideoPlayer,
+        children: [{ path: ":yt_key" }],
       },
     ],
   },

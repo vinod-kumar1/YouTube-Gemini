@@ -9,7 +9,7 @@ let videoStore = createSlice({
   },
   reducers: {
     setStore: (state, action) => {
-      state.storedVideos = [...state.storedVideos, ...action.payload];
+      state.storedVideos = [...state.storedVideos, action.payload];
     },
     setWatvhing: (state, action) => {
       state.watchingVideo = action.payload;
