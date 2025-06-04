@@ -42,27 +42,19 @@ const Header = () => {
           let json = await res.json();
           if (!("success" in json) && json?.results.length > 0) {
             let k = json.results[0].key;
-            dispatch(setStore({ ...movie, key: k }));
-          }
+            return { ...movie, key: k };
+            // dispatch(setStore({ ...movie, key: k }));
+          } else return "error";
         });
+        console.log(fetchedMovies);
+        let res = await Promise.all([...fetchedMovies]);
+        dispatch(setStore(res));
       } catch (err) {
         console.log(err);
       }
     }
     run();
   }, [page]);
-
-  useEffect(() => {
-    // console.log("test");
-    let observer = new IntersectionObserver(
-      (entries) => {
-        console.log("ele", entries.at(-1));
-        if (entries.at(-1).isIntersecting) console.log("intersecting");
-      },
-      { threshold: 0.8 }
-    );
-    observer.observe(document.querySelector(".container"));
-  }, []);
 
   return (
     <div className="text-white font-light bg-[#0f0f0f] w-screen h-[100%] container">

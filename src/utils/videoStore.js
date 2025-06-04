@@ -10,12 +10,16 @@ let videoStore = createSlice({
   },
   reducers: {
     setStore: (state, action) => {
-      state.storedVideos.push(action.payload);
+      state.storedVideos.push(
+        ...action.payload.filter((item) => item != "error")
+      );
     },
     setWatching: (state, action) => {
       state.watchingVideo = action.payload;
     },
-    setPage: (state) => (state.page += 1),
+    setPage: (state) => {
+      state.page += 1;
+    },
     setVideoComments: (state, action) => {
       state.videoComments.push(action.payload);
     },
@@ -23,4 +27,5 @@ let videoStore = createSlice({
 });
 
 export default videoStore.reducer;
-export let { setStore, setWatching, setVideoComments } = videoStore.actions;
+export let { setStore, setWatching, setVideoComments, setPage } =
+  videoStore.actions;

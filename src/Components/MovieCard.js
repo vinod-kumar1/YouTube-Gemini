@@ -1,5 +1,5 @@
 import React from "react";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { useNavigate } from "react-router";
 import { setWatching } from "../utils/videoStore";
 
@@ -8,8 +8,9 @@ const MovieCard = ({ movie, w }) => {
   let dispatch = useDispatch();
 
   let { title, poster_path, overview, id, original_title, key } = movie;
+
   return (
-    <div className={`rounded-md bg-gray-700 py-4 w-${w ? w : "60"}`}>
+    <div className={`rounded-md bg-gray-700 py-4 w-60 intersection`}>
       <img
         onClick={() => {
           navigate(`/watch/${key}?id=${id}`);
