@@ -6,6 +6,7 @@ import { setPage } from "../utils/videoStore";
 const MovieContainer = () => {
   let movies = useSelector((state) => state.videos.storedVideos);
   let dispatch = useDispatch();
+  console.log("movies", movies);
 
   useEffect(() => {
     let observer = new IntersectionObserver(
@@ -17,14 +18,14 @@ const MovieContainer = () => {
           }
         });
       },
-      { rootMargin: "100px" }
+      { rootMargin: "150px" }
     );
     observer.observe(document.querySelector(".show-more"));
     return () => observer.disconnect();
   }, [movies]);
 
   return (
-    <div className="transition-all relative ease-in-out duration-2000 flex flex-wrap gap-2 justify-center movieContainer">
+    <div className="transition-all relative ease-in-out w-screen flex flex-wrap gap-4 justify-center movieContainer">
       {movies.length &&
         movies.map((movie, i) => {
           return (
@@ -35,12 +36,12 @@ const MovieContainer = () => {
       <button
         disabled
         type="button"
-        className="h-max absolute bottom-2 show-more text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center me-2 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800 inline-flex items-center"
+        className="h-max absolute bottom-2 show-more text-white bg-red-600 hover:bg-white hover:text-red-600 focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center me-2  inline-flex items-center"
       >
         <svg
           aria-hidden="true"
           role="status"
-          className="inline w-4 h-4 me-3 text-white animate-spin"
+          className="inline w-4 h-4 me-3 text-white animate-spin hover:text-red-600"
           viewBox="0 0 100 101"
           fill="none"
           xmlns="http://www.w3.org/2000/svg"

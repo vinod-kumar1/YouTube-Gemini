@@ -10,19 +10,21 @@ const MovieCard = ({ movie, w }) => {
   let { title, poster_path, overview, id, original_title, key } = movie;
 
   return (
-    <div className={`rounded-md bg-gray-700 py-4 w-60 intersection`}>
+    <div className="transition-all ease-in-out rounded-md py-4 w-90 tracking-[-0.015em] text-white intersection  px-2 hover:bg-gradient-to-tl from-red-600/25 to-black">
+      <div className="hovering-element absolute"></div>
       <img
         onClick={() => {
           navigate(`/watch/${key}?id=${id}`);
           dispatch(setWatching(movie));
         }}
-        className={`w-[100%] h-40 bg-cover cursor-pointer bg-center`}
+        className={`w-[100%] h-60 bg-cover cursor-pointer`}
         style={{
-          backgroundImage: `url(https://image.tmdb.org/t/p/original/${poster_path})`,
+          backgroundImage: `url(https://i.ytimg.com/vi/${key}/hqdefault.jpg)`,
+          clipPath: "inset(1px)",
         }}
       />
       <p>
-        {title || original_title} | {overview.slice(0, 20)}...
+        {title || original_title} <br /> {overview.slice(0, 40)}...
       </p>
     </div>
   );

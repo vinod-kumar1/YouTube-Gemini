@@ -30,13 +30,13 @@ const VideoPlayer = () => {
   }, []);
 
   return (
-    <div className="z-5 absolute w-screen flex overflow-auto gap-2 top-20 left-0 bg-gray-950 h-screen bg-gray-900]">
+    <div className="z-5 w-screen flex overflow-auto gap-2 top-20 left-0 bg-gray-950 h-screen bg-gray-900]">
       <div className="w-[70%] h-[60%]">
         <iframe
           src={`https://www.youtube.com/embed/${yt_key}?autoplay=1`}
           allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
           allowFullScreen
-          className="w-[100%] h-[100%]"
+          className="w-[100%] z-20 h-[100%]"
         ></iframe>{" "}
         <div className="relative left-2 font-bold">
           <p className="font-mono relative left-2 hover:underline">
@@ -60,7 +60,7 @@ const VideoPlayer = () => {
               >
                 <img
                   className="h-40 rounded-tr-md rounded-br-md"
-                  src={`https://image.tmdb.org/t/p/original/${movie.poster_path}`}
+                  src={`https://i.ytimg.com/vi/${movie.key}/hqdefault.jpg`}
                   alt=""
                 />
                 <p className="ml-2 w-100 font-light">

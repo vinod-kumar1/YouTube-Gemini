@@ -56,21 +56,45 @@ const Header = () => {
 
   return (
     <div className="text-white font-light bg-[#0f0f0f] w-screen h-[100%] container">
-      <div className="sticky top-0 z-4 bg-black">
-        <div className="absolute top-5">
+      <div className="sticky top-0 z-4 bg-black/50 backdrop-blur-md">
+        <div className="absolute top-5 ">
           <button
-            className="relative group cursor-pointer z-2"
+            className="relative group left-2 cursor-pointer z-2"
             onClick={() => showSidebar((p) => !p)}
           >
-            <div className="relative flex overflow-hidden items-center justify-center rounded-full w-[50px] h-[50px] transform transition-all bg-slate-700 ring-0 ring-gray-300 hover:ring-8 group-focus:ring-4 ring-opacity-30 duration-200 shadow-md">
+            <div className="relative flex overflow-hidden items-center justify-center rounded-full w-[50px] h-[50px] transform transition-all bg-slate-700 ring-0 ring-gray-300 hover:ring-8 duration-200 shadow-md">
               <div className="flex flex-col justify-between w-[20px] h-[20px] transform transition-all duration-300 origin-center overflow-hidden">
-                <div className="bg-white h-[2px] w-7 transform transition-all duration-300 origin-left group-focus:translate-x-10"></div>
-                <div className="bg-white h-[2px] w-7 rounded transform transition-all duration-300 group-focus:translate-x-10 delay-75"></div>
-                <div className="bg-white h-[2px] w-7 transform transition-all duration-300 origin-left group-focus:translate-x-10 delay-150"></div>
+                {/* Top Line */}
+                <div
+                  className={`bg-white h-[2px] w-7 transform transition-all duration-300 origin-left
+          ${sidebar ? "translate-x-10" : ""}`}
+                />
 
-                <div className="absolute items-center justify-between transform transition-all duration-500 top-2.5 -translate-x-10 group-focus:translate-x-0 flex w-0 group-focus:w-12">
-                  <div className="absolute bg-white h-[2px] w-5 transform transition-all duration-500 rotate-0 delay-300 group-focus:rotate-45"></div>
-                  <div className="absolute bg-white h-[2px] w-5 transform transition-all duration-500 -rotate-0 delay-300 group-focus:-rotate-45"></div>
+                {/* Middle Line */}
+                <div
+                  className={`bg-white h-[2px] w-7 rounded transform transition-all duration-300 delay-75
+          ${sidebar ? "translate-x-10" : ""}`}
+                />
+
+                {/* Bottom Line */}
+                <div
+                  className={`bg-white h-[2px] w-7 transform transition-all duration-300 origin-left delay-150
+          ${sidebar ? "translate-x-10" : ""}`}
+                />
+
+                {/* X Icon Overlay */}
+                <div
+                  className={`absolute items-center justify-between transform transition-all duration-500 top-2.5
+          flex w-0 ${sidebar ? "translate-x-0 w-12" : "-translate-x-10 w-0"}`}
+                >
+                  <div
+                    className={`absolute bg-white h-[2px] w-5 transform transition-all duration-500 delay-300
+            ${sidebar ? "rotate-45" : "rotate-0"}`}
+                  />
+                  <div
+                    className={`absolute bg-white h-[2px] w-5 transform transition-all duration-500 delay-300
+            ${sidebar ? "-rotate-45" : "rotate-0"}`}
+                  />
                 </div>
               </div>
             </div>
@@ -87,8 +111,8 @@ const Header = () => {
               alt="yt-logo"
               className="w-10 cursor-pointer"
             />
-            <span className="yout font-light text-2xl text-white">
-              YouTube <sup className="font-extralight">IN</sup>
+            <span className="yout font-light ml-1 text-xl text-white">
+              YouTube <sup className="font-extralight text-sm">IN</sup>
             </span>
           </div>
           <div className="border-2 py-2 *:cursor-pointer border-gray-600 flex justify-between w-100 px-2 rounded-4xl">
@@ -106,9 +130,9 @@ const Header = () => {
             className="rounded-4xl w-10"
           />
         </div>
-        <Outlet />
         <Sidebar sidebar={sidebar} />
       </div>
+      <Outlet />
     </div>
   );
 };
