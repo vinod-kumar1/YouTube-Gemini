@@ -1,7 +1,7 @@
 import React, { createContext, useEffect, useRef, useState } from "react";
 import Sidebar from "./Sidebar";
 import { useDispatch, useSelector } from "react-redux";
-import { setStore } from "../utils/videoStore";
+import { emptyStore, setStore } from "../utils/videoStore";
 import { privateKey } from "../../privateKeys";
 import MovieCard from "./MovieCard";
 import { Outlet, useNavigate } from "react-router";
@@ -43,10 +43,8 @@ const Header = () => {
           if (!("success" in json) && json?.results.length > 0) {
             let k = json.results[0].key;
             return { ...movie, key: k };
-            // dispatch(setStore({ ...movie, key: k }));
           } else return "error";
         });
-        console.log(fetchedMovies);
         let res = await Promise.all([...fetchedMovies]);
         dispatch(setStore(res));
       } catch (err) {
@@ -83,7 +81,9 @@ const Header = () => {
             <img
               src="https://www.gstatic.com/youtube/img/branding/favicon/favicon_144x144_v2.png
           "
-              onClick={() => navigate("/")}
+              onClick={() => {
+                navigate("/");
+              }}
               alt="yt-logo"
               className="w-10 cursor-pointer"
             />

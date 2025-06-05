@@ -26,6 +26,7 @@ const VideoPlayer = () => {
         })
         .catch(console.log);
     }
+    window.scroll({ top: 0, behavior: "smooth" });
   }, []);
 
   return (
@@ -54,7 +55,7 @@ const VideoPlayer = () => {
                   navigate(`/watch/${movie.key}?id=${movie.id}`);
                   dispatch(setWatching(movie));
                 }}
-                key={movie.id + i}
+                key={movie.uid}
                 className=" mb-1 cursor-pointer flex"
               >
                 <img
@@ -64,7 +65,7 @@ const VideoPlayer = () => {
                 />
                 <p className="ml-2 w-100 font-light">
                   {movie.title || movie.original_title} | <br />
-                  {movie.overview.slice(0, 40)}...
+                  {movie.overview?.slice(0, 40)}...
                 </p>
               </div>
             );

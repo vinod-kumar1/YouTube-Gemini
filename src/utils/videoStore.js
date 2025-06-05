@@ -1,4 +1,5 @@
 import { createSlice } from "@reduxjs/toolkit";
+import { v4 } from "uuid";
 
 let videoStore = createSlice({
   name: "yt_video",
@@ -10,9 +11,13 @@ let videoStore = createSlice({
   },
   reducers: {
     setStore: (state, action) => {
-      state.storedVideos.push(
-        ...action.payload.filter((item) => item != "error")
-      );
+      let res = action.payload
+        .filter((item) => item != "error")
+        .map((item) => ({ ...item, uid: Date.now() + v4() }));
+      state.storedVideos.push(...res);
+    },
+    emptyStore: (state, action) => {
+      state.storedVideos = [];
     },
     setWatching: (state, action) => {
       state.watchingVideo = action.payload;
@@ -27,5 +32,5 @@ let videoStore = createSlice({
 });
 
 export default videoStore.reducer;
-export let { setStore, setWatching, setVideoComments, setPage } =
+export let { setStore, setWatching, emptyStore, setVideoComments, setPage } =
   videoStore.actions;
