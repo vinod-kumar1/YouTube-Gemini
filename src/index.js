@@ -1,6 +1,10 @@
 import ReactDom from "react-dom/client";
 import "./styles.css";
-import { createBrowserRouter, RouterProvider } from "react-router";
+import {
+  BrowserRouter,
+  createBrowserRouter,
+  RouterProvider,
+} from "react-router";
 import Header from "./Components/Header";
 import { Provider } from "react-redux";
 import VideoPlayer from "./Components/VideoPlayer";
@@ -25,7 +29,9 @@ let router = createBrowserRouter([
 ]);
 
 ReactDom.createRoot(document.getElementById("root")).render(
-  <Provider store={appStore}>
-    <RouterProvider router={router} />
-  </Provider>
+  <BrowserRouter basename="/YouTube-Gemini">
+    <Provider store={appStore}>
+      <RouterProvider router={router} />
+    </Provider>
+  </BrowserRouter>
 );
