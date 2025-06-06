@@ -8,9 +8,9 @@ const CommentsSection = ({ videoKey }) => {
   let dispatch = useDispatch();
 
   return (
-    <div className="absolute top-150 left-2 right-[300px]">
+    <div className="relative bottom-450 w-[60%] left-2 right-[300px]">
       <h3 className="text-lg font-semibold mb-4">Comments</h3>
-      <div className="relative flex gap-2">
+      <div className=" flex gap-2">
         <img
           src="https://yt3.ggpht.com/yti/ANjgQV_KCdTqkS7bKkYIONaWT6byiaEmykdw3BNwOTeZjavRLNU=s88-c-k-c0x00ffffff-no-rj"
           alt="user-icon"
@@ -44,14 +44,17 @@ const CommentsSection = ({ videoKey }) => {
         </button>
       </div>
 
-      <div className="mt-10 relative left-10">
-        {videoComments
-          .filter((obj) => videoKey in obj)
-          .map((comment) => {
+      <div className="mt-10 relative left-10 flex flex-col gap-2">
+        {videoComments.length > 0 &&
+          videoComments.map((comment) => {
             let { value, likes, dislikes } = comment[videoKey];
+            let res = videoComments.filter((obj) => videoKey in obj);
             return (
-              <div key={value} className="bg-gray-600 w-[60%] relative">
-                <p>{value}</p>
+              <div
+                key={value}
+                className="bg-gradient-to-bl rounded-tr-md from-red-600/80 to-black p-2 w-[60%] relative"
+              >
+                <p className="font-extralight">{value}</p>
               </div>
             );
           })}

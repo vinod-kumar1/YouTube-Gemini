@@ -6,6 +6,7 @@ import { setPage } from "../utils/videoStore";
 const MovieContainer = () => {
   let movies = useSelector((state) => state.videos.storedVideos);
   let dispatch = useDispatch();
+  let searching = useSelector((state) => state.videos.searching);
   console.log("movies", movies);
 
   useEffect(() => {
@@ -20,7 +21,9 @@ const MovieContainer = () => {
       },
       { rootMargin: "150px" }
     );
-    observer.observe(document.querySelector(".show-more"));
+    if (!searching) {
+      observer.observe(document.querySelector(".show-more"));
+    }
     return () => observer.disconnect();
   }, [movies]);
 

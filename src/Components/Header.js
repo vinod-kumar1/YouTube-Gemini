@@ -1,9 +1,9 @@
 import React, { createContext, useEffect, useRef, useState } from "react";
 import Sidebar from "./Sidebar";
 import { useDispatch, useSelector } from "react-redux";
-import { emptyStore, setStore } from "../utils/videoStore";
+import { emptyStore, setSearching, setStore } from "../utils/videoStore";
 import { privateKey } from "../../privateKeys";
-import MovieCard from "./MovieCard";
+import { privateKey } from "../../privateKeys";
 import { Outlet, useNavigate } from "react-router";
 
 export let SidebarContext = createContext(null);
@@ -14,6 +14,83 @@ const Header = () => {
   let page = useSelector((state) => state.videos.page);
   let dispatch = useDispatch();
   let navigate = useNavigate();
+  let [tempStore, setTempStore] = useState([]);
+  let saerchInput = useRef("");
+  console.log("page", page);
+
+  useEffect(() => {
+    dispatch(setSearching(false));
+  });
+
+  useEffect(() => {
+    console.log("tempS", tempStore);
+    dispatch(setStore(tempStore));
+  }, [tempStore]);
+
+  async function searchVideos() {
+    // try{
+    dispatch(emptyStore());
+    dispatch(setSearching(true));
+    // let res = await fetch(
+    //   `https://api.themoviedb.org/3/search/movie?query=${saerchInput.current.value}&include_adult=false&language=en-US&page=1`,
+    //   privateKey.options
+    // );
+
+    // let json = await res.json();
+    // let temp = [];
+
+    // json.results.forEach(async (movie) => {
+    //   let { title, original_title, id, overview } = movie;
+    //   let video = await fetch(
+    //     `https://api.themoviedb.org/3/movie/${id}/videos?language=en-US`,
+    //     privateKey.options
+    //   );
+    //   if (!video.ok) console.log(new Error(video));
+    //   let videoJson = await video.json();
+    //   if (Array.isArray(videoJson.results) && videoJson.results.length > 0)
+    //     temp.push({
+    //       title,
+    //       original_title,
+    //       id,
+    //       overview,
+    //       key: videoJson.results[0].key,
+    //     });
+    // });
+
+    // let promiseVideos = await Promise.all(temp);
+    // dispatch(setStore(promiseVideos));
+    // // }
+    // catch(console.log)
+    fetch(
+      `https://api.themoviedb.org/3/search/movie?query=${saerchInput.current.value}&include_adult=false&language=en-US&page=1`,
+      privateKey.options
+    )
+      .then((res) => res.json())
+      .then((json) => {
+        json.results.forEach(({ title, original_title, id, overview }) => {
+          fetch(
+            `https://api.themoviedb.org/3/movie/${id}/videos?language=en-US`,
+            privateKey.options
+          )
+            .then((ress) => ress.json())
+            .then((jsonn) => {
+              if (jsonn.results.length && Array.isArray(jsonn.results))
+                setTempStore((p) => [
+                  ...p,
+                  {
+                    title,
+                    original_title,
+                    id,
+                    overview,
+                    key: jsonn.results[0].key,
+                  },
+                ]);
+            })
+            .catch(console.log);
+        });
+      })
+      .catch(console.log);
+  }
 
   console.log(movies);
 
@@ -46,6 +123,7 @@ const Header = () => {
           } else return "error";
         });
         let res = await Promise.all([...fetchedMovies]);
+        // console.log("promised", res);
         dispatch(setStore(res));
       } catch (err) {
         console.log(err);
@@ -118,10 +196,16 @@ const Header = () => {
           <div className="border-2 py-2 *:cursor-pointer border-gray-600 flex justify-between w-100 px-2 rounded-4xl">
             <input
               type="text"
+              ref={saerchInput}
               className="w-[100%] outline-0 px-2 text-gray-300 rounded-xl"
               placeholder="Search"
             />
-            <button className="border-l-2 px-2 border-gray-300">🔎</button>
+            <button
+              onClick={searchVideos}
+              className="border-l-2 px-2 border-gray-300"
+            >
+              🔎
+            </button>
           </div>
 
           <img
