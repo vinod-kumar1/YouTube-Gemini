@@ -6,7 +6,7 @@ let videoStore = createSlice({
   initialState: {
     storedVideos: [],
     watchingVideo: {},
-    page: 1,
+    page: 0,
     videoComments: [],
     searching: false,
   },

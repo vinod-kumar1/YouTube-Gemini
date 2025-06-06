@@ -95,6 +95,7 @@ const Header = () => {
   console.log(movies);
 
   useEffect(() => {
+    console.log("init");
     async function run() {
       try {
         let fetchAllMovies = await fetch(
@@ -123,7 +124,6 @@ const Header = () => {
           } else return "error";
         });
         let res = await Promise.all([...fetchedMovies]);
-        // console.log("promised", res);
         dispatch(setStore(res));
       } catch (err) {
         console.log(err);

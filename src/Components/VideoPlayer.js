@@ -37,7 +37,7 @@ const VideoPlayer = () => {
             src={`https://www.youtube.com/embed/${yt_key}?autoplay=1`}
             allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
             allowFullScreen
-            className="w-[100%] z-20 h-[100%]"
+            className="w-[100%] z-20 h-[40%]"
           ></iframe>{" "}
           <div className="relative left-2 font-bold">
             <p className="font-mono relative left-2 hover:underline">

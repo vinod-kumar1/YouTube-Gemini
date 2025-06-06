@@ -8,7 +8,7 @@ const CommentsSection = ({ videoKey }) => {
   let dispatch = useDispatch();
 
   return (
-    <div className="relative bottom-450 w-[60%] left-2 right-[300px]">
+    <div className="relative -top-1580 w-[60%] left-2 right-[300px]">
       <h3 className="text-lg font-semibold mb-4">Comments</h3>
       <div className=" flex gap-2">
         <img

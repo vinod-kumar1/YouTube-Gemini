@@ -31,9 +31,7 @@ const MovieContainer = () => {
     <div className="transition-all relative ease-in-out w-screen flex flex-wrap gap-4 justify-center movieContainer">
       {movies.length &&
         movies.map((movie, i) => {
-          return (
-            movie.poster_path && <MovieCard key={movie.uid} movie={movie} />
-          );
+          return <MovieCard key={movie.uid} movie={movie} />;
         })}
       <br />
       <button
