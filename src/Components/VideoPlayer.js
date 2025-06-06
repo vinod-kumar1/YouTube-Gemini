@@ -2,7 +2,7 @@ import React, { useEffect } from "react";
 import { useNavigate, useParams, useSearchParams } from "react-router";
 import { privateKey } from "../../privateKeys";
 import { useDispatch, useSelector } from "react-redux";
-import { setWatching } from "../utils/videoStore";
+import { setPage, setWatching } from "../utils/videoStore";
 import CommentsSection from "./CommentsSection";
 
 const VideoPlayer = () => {
@@ -25,6 +25,7 @@ const VideoPlayer = () => {
           dispatch(setWatching(json));
         })
         .catch(console.log);
+      if (movies.length <= 0) dispatch(setPage(1));
     }
     window.scroll({ top: 0, behavior: "smooth" });
   }, []);
@@ -37,7 +38,7 @@ const VideoPlayer = () => {
             src={`https://www.youtube.com/embed/${yt_key}?autoplay=1`}
             allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
             allowFullScreen
-            className="w-[100%] z-20 h-[40%]"
+            className="w-[100%] z-20 h-[100%]"
           ></iframe>{" "}
           <div className="relative left-2 font-bold">
             <p className="font-mono relative left-2 hover:underline">
