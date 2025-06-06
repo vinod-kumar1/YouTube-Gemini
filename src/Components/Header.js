@@ -177,10 +177,10 @@ const Header = () => {
           <img
             src="https://yt3.ggpht.com/yti/ANjgQV_KCdTqkS7bKkYIONaWT6byiaEmykdw3BNwOTeZjavRLNU=s88-c-k-c0x00ffffff-no-rj"
             alt="user-icon"
-            className="rounded-4xl w-10 relative right-2"
+            className="rounded-4xl w-10 relative right-4"
           />
         </div>
-        <Sidebar sidebar={sidebar} />
+        <Sidebar setSidebar={showSidebar} sidebar={sidebar} />
       </div>
       <Outlet />
     </div>

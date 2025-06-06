@@ -2,8 +2,11 @@
   "name": "youtube",
   "version": "1.0.0",
   "source": "src/index.js",
+  "homepage": "https://vinod-kumar1.github.io/YouTube-Gemini",
   "scripts": {
     "build": "parcel build",
+    "predeploy": "npm run build",
+    "deploy": "gh-pages -d dist",
     "start": "parcel src/index.html"
   },
   "keywords": [],
@@ -12,12 +15,14 @@
   "description": "",
   "devDependencies": {
     "@parcel/bundler-library": "^2.15.2",
+    "gh-pages": "^6.3.0",
     "parcel": "^2.15.2"
   },
   "dependencies": {
     "@google/genai": "^1.4.0",
     "@reduxjs/toolkit": "^2.8.2",
     "@tailwindcss/postcss": "^4.1.8",
+    "firebase": "^11.9.0",
     "postcss": "^8.5.4",
     "react": "^19.1.0",
     "react-dom": "^19.1.0",
