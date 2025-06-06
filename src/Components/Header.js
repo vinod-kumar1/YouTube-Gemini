@@ -1,7 +1,7 @@
 import React, { createContext, useEffect, useRef, useState } from "react";
 import Sidebar from "./Sidebar";
 import { useDispatch, useSelector } from "react-redux";
-import { emptyStore, setSearching, setStore } from "../utils/videoStore";
+import { emptyStore, setStore } from "../utils/videoStore";
 import { privateKey } from "../../privateKeys";
 import { privateKey } from "../../privateKeys";
 import { Outlet, useNavigate } from "react-router";
@@ -19,48 +19,13 @@ const Header = () => {
   console.log("page", page);
 
   useEffect(() => {
-    dispatch(setSearching(false));
-  });
-
-  useEffect(() => {
     console.log("tempS", tempStore);
     dispatch(setStore(tempStore));
   }, [tempStore]);
 
   async function searchVideos() {
-    // try{
     dispatch(emptyStore());
-    dispatch(setSearching(true));
-    // let res = await fetch(
-    //   `https://api.themoviedb.org/3/search/movie?query=${saerchInput.current.value}&include_adult=false&language=en-US&page=1`,
-    //   privateKey.options
-    // );
-
-    // let json = await res.json();
-    // let temp = [];
-
-    // json.results.forEach(async (movie) => {
-    //   let { title, original_title, id, overview } = movie;
-    //   let video = await fetch(
-    //     `https://api.themoviedb.org/3/movie/${id}/videos?language=en-US`,
-    //     privateKey.options
-    //   );
-    //   if (!video.ok) console.log(new Error(video));
-    //   let videoJson = await video.json();
-    //   if (Array.isArray(videoJson.results) && videoJson.results.length > 0)
-    //     temp.push({
-    //       title,
-    //       original_title,
-    //       id,
-    //       overview,
-    //       key: videoJson.results[0].key,
-    //     });
-    // });
-
-    // let promiseVideos = await Promise.all(temp);
-    // dispatch(setStore(promiseVideos));
-    // // }
-    // catch(console.log)
+    navigate("/");
     fetch(
       `https://api.themoviedb.org/3/search/movie?query=${saerchInput.current.value}&include_adult=false&language=en-US&page=1`,
       privateKey.options
@@ -85,6 +50,7 @@ const Header = () => {
                     key: jsonn.results[0].key,
                   },
                 ]);
+              else setTempStore([]);
             })
             .catch(console.log);
         });
