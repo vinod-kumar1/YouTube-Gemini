@@ -33,9 +33,9 @@ const VideoPlayer = () => {
   return (
     <div className="z-5 w-screen flex flex-col overflow-auto gap-2 top-20 left-0 bg-gray-950 h-screen bg-gray-900]">
       <div className="flex">
-        <div className="w-[70%] h-[20%]">
+        <div className="relative w-[70%] h-120">
           <iframe
-            src={`https://www.youtube.com/embed/${yt_key}?autoplay=1`}
+            src={`https://www.youtube.com/embed/${yt_key}?autoplay=1&mute=0`}
             allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
             allowFullScreen
             className="w-[100%] z-20 h-[100%]"
@@ -50,7 +50,7 @@ const VideoPlayer = () => {
         </div>
         <div className="right-0  top-0">
           {movies.length &&
-            movies.map((movie, i) => {
+            movies.slice(0, 10).map((movie, i) => {
               return (
                 <div
                   onClick={() => {

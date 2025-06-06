@@ -8,7 +8,7 @@ const CommentsSection = ({ videoKey }) => {
   let dispatch = useDispatch();
 
   return (
-    <div className="relative -top-410 w-[60%] left-2 right-[300px]">
+    <div className="relative -top-230 w-[60%] left-2 right-[300px]">
       <h3 className="text-lg font-semibold mb-4">Comments</h3>
       <div className=" flex gap-2">
         <img
@@ -46,7 +46,7 @@ const CommentsSection = ({ videoKey }) => {
 
       <div className="mt-10 relative left-10 flex flex-col gap-2">
         {videoComments.length > 0 &&
-          videoComments.splice(0, 10).map((comment) => {
+          videoComments.map((comment) => {
             let { value, likes, dislikes } = comment[videoKey];
             let res = videoComments.filter((obj) => videoKey in obj);
             return (
