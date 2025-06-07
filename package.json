@@ -12,7 +12,6 @@
   "description": "",
   "devDependencies": {
     "@parcel/bundler-library": "^2.15.2",
-    "gh-pages": "^6.3.0",
     "parcel": "^2.15.2"
   },
   "dependencies": {
