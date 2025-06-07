@@ -1,12 +1,9 @@
 {
   "name": "youtube",
   "version": "1.0.0",
-  "source": "src/index.html",
-  "homepage": "https://vinod-kumar1.github.io/YouTube-Gemini",
+  "source": "src/index.js",
   "scripts": {
-    "build": "parcel build --public-url ./",
-    "predeploy": "npm run build",
-    "deploy": "gh-pages -d dist",
+    "build": "parcel build",
     "start": "parcel src/index.html"
   },
   "keywords": [],
@@ -23,6 +20,7 @@
     "@reduxjs/toolkit": "^2.8.2",
     "@tailwindcss/postcss": "^4.1.8",
     "firebase": "^11.9.0",
+    "firebase-tools": "^14.6.0",
     "postcss": "^8.5.4",
     "react": "^19.1.0",
     "react-dom": "^19.1.0",

@@ -30,9 +30,7 @@ let router = createBrowserRouter([
 ]);
 
 ReactDom.createRoot(document.getElementById("root")).render(
-  <HashRouter basename="/YouTube-Gemini">
-    <Provider store={appStore}>
-      <RouterProvider router={router} />
-    </Provider>
-  </HashRouter>
+  <Provider store={appStore}>
+    <RouterProvider router={router} />
+  </Provider>
 );
