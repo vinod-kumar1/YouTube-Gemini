@@ -4,6 +4,7 @@ import {
   BrowserRouter,
   createBrowserRouter,
   RouterProvider,
+  HashRouter,
 } from "react-router";
 import Header from "./Components/Header";
 import { Provider } from "react-redux";
@@ -29,9 +30,9 @@ let router = createBrowserRouter([
 ]);
 
 ReactDom.createRoot(document.getElementById("root")).render(
-  <BrowserRouter basename="/YouTube-Gemini">
+  <HashRouter basename="/YouTube-Gemini">
     <Provider store={appStore}>
       <RouterProvider router={router} />
     </Provider>
-  </BrowserRouter>
+  </HashRouter>
 );

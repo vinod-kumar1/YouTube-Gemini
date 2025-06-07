@@ -4,7 +4,7 @@
   "source": "src/index.js",
   "homepage": "https://vinod-kumar1.github.io/YouTube-Gemini",
   "scripts": {
-    "build": "parcel build",
+    "build": "parcel build --public-url ./",
     "predeploy": "npm run build",
     "deploy": "gh-pages -d dist",
     "start": "parcel src/index.html"
