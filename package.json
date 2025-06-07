@@ -1,7 +1,7 @@
 {
   "name": "youtube",
   "version": "1.0.0",
-  "source": "src/index.js",
+  "source": "src/index.html",
   "homepage": "https://vinod-kumar1.github.io/YouTube-Gemini",
   "scripts": {
     "build": "parcel build --public-url ./",
